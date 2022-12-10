@@ -1,14 +1,11 @@
 import './App.css';
 
-const Header = (props) => {
-  return (
-    <>
-      <h1>{props.course}</h1>
-    </>
-  );
+const Header = props => {
+  console.log(props);
+  return <h1>{props.course}</h1>;
 };
 
-const Content = (props) => {
+const Content = props => {
   return (
     <div>
       <p>
@@ -21,29 +18,45 @@ const Content = (props) => {
         {props.part3} {props.exercises3}
       </p>
     </div>
-  )
-
-}
-const Total = (props) => {
-
-    return (
-    <div>
-      <p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p>
-    </div>
   );
-
-}
-
-const App = () => {
-  let course = 'Half Stack Development'
+};
+const Total = props => {
   return (
     <div>
-      <Header course={course} />
-      <Content exercises1={10} exercises2={7} exercises3={14} part1='Fundamentals of React' part2='Using props to pass data' part3='State of a Component'/>
-      <Total exercises1={10} exercises2={7} exercises3={14}/>
+      <p>
+        Number of exercises{' '}
+        {props.exercises1 + props.exercises2 + props.exercises3}
+      </p>
     </div>
-  )
+  );
+};
 
+const App = () => {
+  const course = {
+    name: 'Half Stack Application Development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10,
+      },
+      {
+        name: 'Using Props to Pass Data',
+        exercises: 7,
+      },
+      {
+        name: 'State of the component',
+        exercises: 14,
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <Header course={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
+    </div>
+  );
 };
 
 export default App;
