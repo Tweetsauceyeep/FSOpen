@@ -1,17 +1,8 @@
 const {request, response} = require('express');
 const express = require('express');
 const app = express();
+
 app.use(express.json());
-
-// our own middleware!!!!!!!!
-const requestLogger = () =>{
-  console.log('Method:', request.method)
-  console.log('Path:  ', request.path)
-  console.log('Body:  ', request.body)
-  console.log('---')
-  next()
-}
-
 
 let numbers = [
   {
@@ -75,12 +66,6 @@ const generateId = () => {
   let id = Math.floor(Math.random() * 1000);
   return id;
 };
-
-
-const idExists = () => {
-  console.log()
-}
-
 
 // post request
 app.post('/api/persons', (request, response) => {
