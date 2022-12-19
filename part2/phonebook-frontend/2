@@ -1,7 +1,6 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import PersonForm from './components/PersonForm';
 import NumbersList from './components/NumbersList';
-import axios from 'axios'
 
 // remember to never define components in other components
 const App = () => {
@@ -12,12 +11,8 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log(response.data)
-        setPersons(response.data)
-      })
-  },[])
+      .get('http://localhost:3001')
+  })
 
   //check if object exists in the array
   //nah this shit dont work TODO
@@ -54,7 +49,6 @@ const App = () => {
     setNewName('');
     setNewNumber('');
   };
-
 
   return (
     <div>
