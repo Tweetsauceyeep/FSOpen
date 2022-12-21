@@ -1,4 +1,4 @@
-const NumbersList = ({persons, search}) => {
+const NumbersList = ({persons, search, deletePerson}) => {
   return (
     <div>
       {persons
@@ -10,11 +10,14 @@ const NumbersList = ({persons, search}) => {
         .map(person => (
           <div key={person.id}>
             {person.name} {person.number}
+            <br></br>
+            <button onClick={() => {deletePerson(person)}}>delete</button>
           </div>
         ))}
     </div>
   );
 };
+// ======= NOT USED =======
 //const NumbersList = ({persons, search}) => {
 //  return (
 //    <div>
